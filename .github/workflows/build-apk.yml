@@ -33,11 +33,12 @@ jobs:
     - name: Synchronizacja z platformą Android (Capacitor)
       run: npx cap sync android
 
-    - name: Nadanie uprawnień i budowanie APK (Debug)
+    - name: Naprawa wrappera i budowanie APK (Debug)
       working-directory: ./android
       run: |
-        chmod +x gradlew
-        ./gradlew assembleDebug
+          gradle wrapper
+          chmod +x gradlew
+          ./gradlew assembleDebug
 
     - name: Przesłanie pliku APK jako artefaktu
       uses: actions/upload-artifact@v4
