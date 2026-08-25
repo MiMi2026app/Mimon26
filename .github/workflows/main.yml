@@ -1,13 +1,47 @@
-cd android
-rm gradlew gradlew.bat
-gradle wrapper
+name: Build Android APK
 
-git update-index --chmod=+x gradlew
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
 
-git add .
-git commit -m "Fix: Re-generate clean Gradle wrapper"
-git push
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-git add .
-git commit -m "Dodanie konfiguracji GitHub Actions dla Androida"
-git push origin main
+    steps:
+      - name: Pobranie kodu repozytorium
+        uses: actions/checkout@v4
+
+      - name: Konfiguracja Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Konfiguracja Środowiska Java (JDK 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Instalacja zależności npm i budowanie projektu webowego
+        run: |
+          npm ci || npm install
+          npm run build --if-present
+
+      - name: Synchronizacja Capacitor z Androidem
+        run: |
+          npx cap sync android || true
+
+      - name: Przygotowanie Gradle Wrappera i Budowanie APK
+        working-directory: ./android
+        run: |
+          gradle wrapper --gradle-version 8.5
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Zapisanie pliku APK jako Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug.apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
