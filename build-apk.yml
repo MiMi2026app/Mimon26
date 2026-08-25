@@ -1,0 +1,43 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [ "main", "master" ] # Skrypt uruchomi się po wysłaniu kodu na gałąź główną
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Klonowanie repozytorium
+      uses: actions/checkout@v4
+
+    - name: Konfiguracja Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18 # Lub nowsza wersja dopasowana do Twojego projektu
+
+    - name: Konfiguracja środowiska Java (wymagana dla Androida)
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Instalacja zależności projektu
+      run: npm install
+
+    - name: Budowanie aplikacji webowej
+      run: npm run build # Komenda budująca Twoją aplikację (np. Vite/React/Vue)
+
+    - name: Synchronizacja z platformą Android (Capacitor)
+      run: npx cap sync android
+
+    - name: Budowanie pliku APK (Debug)
+      working-directory: ./android
+      run: ./gradlew assembleDebug
+
+    - name: Przesłanie pliku APK jako artefaktu zBuildAction
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: android/app/build/outputs/apk/debug/app-debug.apk
