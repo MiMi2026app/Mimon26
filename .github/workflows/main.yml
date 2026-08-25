@@ -24,7 +24,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Instalacja zależności npm i budowanie projektu webowego
+      - name: Instalacja wymuszonej wersji Gradle 8.5
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.5'
+
+      - name: Instalacja zależności npm i budowanie webowe
         run: |
           npm ci || npm install
           npm run build --if-present
@@ -33,12 +38,9 @@ jobs:
         run: |
           npx cap sync android || true
 
-      - name: Przygotowanie Gradle Wrappera i Budowanie APK
+      - name: Budowanie APK (Debug)
         working-directory: ./android
-        run: |
-          gradle wrapper --gradle-version 8.5
-          chmod +x gradlew
-          ./gradlew assembleDebug
+        run: gradle assembleDebug
 
       - name: Zapisanie pliku APK jako Artifact
         uses: actions/upload-artifact@v4
