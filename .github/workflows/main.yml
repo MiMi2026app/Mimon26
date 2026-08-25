@@ -1,3 +1,7 @@
+- name: Generowanie Gradle Wrappera
+        working-directory: ./android
+        run: gradle wrapper
+
 git add .
 git commit -m "Dodanie konfiguracji GitHub Actions dla Androida"
 git push origin main
