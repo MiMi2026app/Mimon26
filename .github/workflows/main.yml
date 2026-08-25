@@ -1,0 +1,3 @@
+git add .
+git commit -m "Dodanie konfiguracji GitHub Actions dla Androida"
+git push origin main
