@@ -15,7 +15,7 @@ jobs:
     - name: Konfiguracja Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 20 # Lub nowsza wersja dopasowana do Twojego projektu
+        node-version: 22 # Lub nowsza wersja dopasowana do Twojego projektu
 
     - name: Konfiguracja środowiska Java (wymagana dla Androida)
       uses: actions/setup-java@v4
