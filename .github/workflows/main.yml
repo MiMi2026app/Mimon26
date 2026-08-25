@@ -1,6 +1,12 @@
-- name: Generowanie Gradle Wrappera
-        working-directory: ./android
-        run: gradle wrapper
+cd android
+rm gradlew gradlew.bat
+gradle wrapper
+
+git update-index --chmod=+x gradlew
+
+git add .
+git commit -m "Fix: Re-generate clean Gradle wrapper"
+git push
 
 git add .
 git commit -m "Dodanie konfiguracji GitHub Actions dla Androida"
