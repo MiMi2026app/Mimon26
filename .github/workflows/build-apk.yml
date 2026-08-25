@@ -36,7 +36,7 @@ jobs:
     - name: Naprawa pliku gradlew z gita
       run: git checkout android/gradlew
 
-    - name: Make gradlew executable
+    - name: Nadanie uprawnień do gradlew
       run: chmod +x ./android/gradlew
       
     - name: Budowanie pliku APK (Debug)
