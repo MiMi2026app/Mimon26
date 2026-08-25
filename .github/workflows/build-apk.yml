@@ -32,6 +32,9 @@ jobs:
     - name: Synchronizacja z platformą Android (Capacitor)
       run: npx cap sync android
 
+    - name: Make gradlew executable
+      run: chmod +x ./android/gradlew
+    
     - name: Budowanie pliku APK (Debug)
       working-directory: ./android
       run: ./gradlew assembleDebug
