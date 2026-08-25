@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches: [ "main", "master" ] # Skrypt uruchomi się po wysłaniu kodu na gałąź główną
 
 jobs:
   build:
@@ -15,7 +15,7 @@ jobs:
     - name: Konfiguracja Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '22'
+        node-version: 20 # Lub nowsza wersja dopasowana do Twojego projektu
         cache: 'npm'
 
     - name: Konfiguracja środowiska Java (wymagana dla Androida)
@@ -28,22 +28,16 @@ jobs:
       run: npm install
 
     - name: Budowanie aplikacji webowej
-      run: npm run build
+      run: npm run build # Komenda budująca Twoją aplikację (np. Vite/React/Vue)
 
     - name: Synchronizacja z platformą Android (Capacitor)
       run: npx cap sync android
 
-    - name: Naprawa pliku gradlew z gita
-      run: git checkout android/gradlew
-
-    - name: Nadanie uprawnień do gradlew
-      run: chmod +x ./android/gradlew
-      
     - name: Budowanie pliku APK (Debug)
       working-directory: ./android
       run: ./gradlew assembleDebug
 
-    - name: Przesłanie pliku APK jako artefaktu
+    - name: Przesłanie pliku APK jako artefaktu zBuildAction
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
