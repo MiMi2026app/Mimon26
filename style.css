@@ -1,0 +1,689 @@
+:root {
+  --oneui-primary: #0665d0;
+  --oneui-primary-hover: #0553ae;
+  --oneui-primary-light: #e8f1fc;
+  --oneui-bg: #f3f6f9;
+  --oneui-surface: #ffffff;
+  --oneui-text: #1e293b;
+  --oneui-text-sub: #64748b;
+  --oneui-border: #cbd5e1;
+  --oneui-border-focus: #0665d0;
+  --oneui-radius: 10px;
+  --oneui-radius-sm: 6px;
+  --oneui-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+  --oneui-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--oneui-bg);
+  color: var(--oneui-text);
+  margin: 0;
+  padding: 0;
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* LOGO NAGŁÓWKA I PASKA */
+.company-bar-logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--oneui-radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--oneui-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-bar-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.app-logo-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: var(--oneui-radius);
+}
+
+.welcome-logo-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--oneui-radius);
+  overflow: hidden;
+  background: var(--oneui-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.welcome-logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* GÓRNY PASEK AKTYWNEGO PODMIOTU (ONEUI) */
+.sticky-company-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--oneui-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  padding: 12px 24px;
+  transition: all 0.25s ease;
+}
+
+.company-bar-inner {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.company-bar-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 280px;
+}
+
+.company-bar-icon-badge {
+  width: 40px;
+  height: 40px;
+  background: var(--oneui-primary-light);
+  color: var(--oneui-primary);
+  border-radius: var(--oneui-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.company-bar-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--oneui-text-sub);
+  margin-bottom: 2px;
+}
+
+.oneui-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.oneui-select-modern {
+  width: 100%;
+  appearance: none;
+  background-color: var(--oneui-surface);
+  border: 1.5px solid var(--oneui-border);
+  border-radius: var(--oneui-radius-sm);
+  padding: 8px 36px 8px 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--oneui-text);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--oneui-shadow-sm);
+}
+
+.oneui-select-modern:hover {
+  border-color: var(--oneui-primary);
+}
+
+.oneui-select-modern:focus {
+  border-color: var(--oneui-primary-hover);
+  box-shadow: 0 0 0 3px rgba(6, 101, 208, 0.15);
+}
+
+.select-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--oneui-text-sub);
+  pointer-events: none;
+}
+
+.company-bar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* NOWOCZESNE WYSZUKIWARKI "SZUKAJ WG..." (ONEUI) */
+.search-filter-box {
+  background: #f8fafc;
+  border: 1px solid var(--oneui-border);
+  border-radius: var(--oneui-radius);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.search-field-wrapper {
+  flex: 1;
+  min-width: 240px;
+}
+
+.search-field-wrapper label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--oneui-text);
+  margin-bottom: 6px;
+}
+
+.oneui-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--oneui-surface);
+  border: 1.5px solid var(--oneui-border);
+  border-radius: var(--oneui-radius-sm);
+  transition: all 0.2s ease;
+  box-shadow: var(--oneui-shadow-sm);
+}
+
+.oneui-search-box:hover {
+  border-color: #94a3b8;
+}
+
+.oneui-search-box:focus-within {
+  border-color: var(--oneui-primary);
+  box-shadow: 0 0 0 3px rgba(6, 101, 208, 0.15);
+}
+
+.search-icon {
+  padding-left: 12px;
+  font-size: 15px;
+  color: var(--oneui-text-sub);
+  user-select: none;
+}
+
+.oneui-search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 10px 10px 10px 8px;
+  font-size: 14px;
+  color: var(--oneui-text);
+  outline: none;
+}
+
+.oneui-search-input::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.search-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--oneui-text-sub);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 12px;
+  transition: color 0.15s ease;
+  display: none;
+}
+
+.oneui-search-box.has-value .search-clear-btn {
+  display: block;
+}
+
+.search-clear-btn:hover {
+  color: #ef4444;
+}
+
+/* POZOSTAŁE ELEMENTY UI */
+.sticky-nav-container {
+  position: sticky;
+  top: 65px;
+  z-index: 990;
+  background: rgba(243, 246, 249, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 12px 24px 8px 24px;
+  border-bottom: 1px solid var(--oneui-border);
+}
+
+.nav-container-inner {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: var(--oneui-surface);
+  border: 1px solid var(--oneui-border);
+  padding: 8px 16px;
+  border-radius: var(--oneui-radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oneui-text-sub);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  background: #f1f5f9;
+  color: var(--oneui-text);
+  border-color: #94a3b8;
+}
+
+.tab-btn.active {
+  background: var(--oneui-primary);
+  color: #ffffff;
+  border-color: var(--oneui-primary);
+  box-shadow: 0 2px 6px rgba(6, 101, 208, 0.25);
+}
+
+.card {
+  background: var(--oneui-surface);
+  border-radius: var(--oneui-radius);
+  border: 1px solid var(--oneui-border);
+  box-shadow: var(--oneui-shadow);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.company-card {
+  border-left: 5px solid var(--oneui-primary);
+}
+
+.welcome-card-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.welcome-icon {
+  font-size: 36px;
+  background: var(--oneui-primary-light);
+  padding: 12px;
+  border-radius: var(--oneui-radius);
+}
+
+.welcome-form {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.oneui-input-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--oneui-surface);
+  border: 1.5px solid var(--oneui-border);
+  border-radius: var(--oneui-radius-sm);
+  transition: all 0.2s ease;
+}
+
+.oneui-input-field-wrapper:focus-within {
+  border-color: var(--oneui-primary);
+  box-shadow: 0 0 0 3px rgba(6, 101, 208, 0.15);
+}
+
+.input-prefix-icon {
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.oneui-text-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+.empty-state-card {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.oneui-header {
+  margin-bottom: 24px;
+}
+
+.oneui-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.oneui-header p {
+  color: var(--oneui-text-sub);
+  margin: 0;
+  font-size: 15px;
+}
+
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--oneui-text);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--oneui-border);
+  border-radius: var(--oneui-radius-sm);
+  font-size: 14px;
+  background: var(--oneui-surface);
+  color: var(--oneui-text);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--oneui-primary);
+  box-shadow: 0 0 0 3px rgba(6, 101, 208, 0.15);
+}
+
+.btn {
+  background: var(--oneui-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--oneui-radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--oneui-primary-hover);
+}
+
+.btn-primary-light {
+  background: var(--oneui-primary-light);
+  color: var(--oneui-primary);
+  box-shadow: none;
+}
+
+.btn-primary-light:hover {
+  background: #d4e4fc;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
+}
+
+.btn-secondary-light {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid var(--oneui-border);
+  box-shadow: none;
+}
+
+.btn-secondary-light:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.btn-success {
+  background: #10b981;
+}
+.btn-success:hover {
+  background: #059669;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #ffffff;
+}
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.property-card-item {
+  background: var(--oneui-surface);
+  border: 1.5px solid var(--oneui-border);
+  border-radius: var(--oneui-radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--oneui-shadow-sm);
+}
+
+.property-card-item:hover {
+  border-color: var(--oneui-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--oneui-shadow);
+}
+
+.property-card-item h3 {
+  margin: 0 0 6px 0;
+  font-size: 17px;
+  color: var(--oneui-text);
+}
+
+.styled-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.styled-list li {
+  background: var(--oneui-surface);
+  border: 1px solid var(--oneui-border);
+  border-radius: var(--oneui-radius-sm);
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--oneui-shadow-sm);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--oneui-border);
+  margin: 20px 0;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.summary-item {
+  background: #f8fafc;
+  border: 1px solid var(--oneui-border);
+  padding: 14px;
+  border-radius: var(--oneui-radius-sm);
+}
+
+.summary-item label {
+  font-size: 11px;
+  color: var(--oneui-text-sub);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.summary-item div {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.attachments-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.attachment-chip {
+  background: #f8fafc;
+  border: 1.5px solid var(--oneui-border);
+  padding: 8px 12px;
+  border-radius: var(--oneui-radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-ok { background: #d1fae5; color: #065f46; }
+.status-warning { background: #fef3c7; color: #92400e; }
+.status-expired { background: #fee2e2; color: #991b1b; }
+
+/* MODALE */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.modal-content {
+  background: var(--oneui-surface);
+  margin: 40px auto;
+  padding: 28px;
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--oneui-radius);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+  animation: modalFadeIn 0.25s ease;
+}
+
+.modal-content-large {
+  max-width: 720px;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header-styled {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header-styled h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.modal-close-x {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--oneui-text-sub);
+}
+
+.modal-close-x:hover {
+  color: var(--oneui-text);
+}
+
+.modal-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
