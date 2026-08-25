@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   push:
-    branches: [ "main", "master" ] # Skrypt uruchomi się po wysłaniu kodu na gałąź główną
+    branches: [ "main", "master" ]
 
 jobs:
   build:
@@ -15,33 +15,33 @@ jobs:
     - name: Konfiguracja Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 22 # Lub nowsza wersja dopasowana do Twojego projektu
+        node-version: 22
         cache: 'npm'
 
-    - name: Konfiguracja środowiska Java (wymagana dla Androida)
-      uses: actions/setup-java@v5
+    - name: Konfiguracja środowiska Java (Gradle)
+      uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
 
     - name: Instalacja zależności projektu
-      run: npm install
+      run: npm ci # Użyj npm ci zamiast npm install dla środowisk CI (szybciej i stabilniej)
 
     - name: Budowanie aplikacji webowej
-      run: npm run build # Komenda budująca Twoją aplikację (np. Vite/React/Vue)
+      run: npm run build
 
     - name: Synchronizacja z platformą Android (Capacitor)
       run: npx cap sync android
 
-    - name: Nadanie uprawnień dla gradlew
-      run: chmod +x android/gradlew
-    
-    - name: Budowanie pliku APK (Debug)
+    - name: Nadanie uprawnień i budowanie APK (Debug)
       working-directory: ./android
-      run: ./gradlew assembleDebug
+      run: |
+        chmod +x gradlew
+        ./gradlew assembleDebug
 
-    - name: Przesłanie pliku APK jako artefaktu zBuildAction
+    - name: Przesłanie pliku APK jako artefaktu
       uses: actions/upload-artifact@v4
       with:
         name: app-debug
         path: android/app/build/outputs/apk/debug/app-debug.apk
+        retention-days: 7
