@@ -15,11 +15,11 @@ jobs:
     - name: Konfiguracja Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 22
+        node-version: 24
         cache: 'npm'
 
     - name: Konfiguracja środowiska Java (Gradle)
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: '17'
